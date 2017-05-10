@@ -1,4 +1,4 @@
-# TRADE SERVICE #  
+# FX QUOTES TRADES SERVICE #  
 
 IBANFIRST provides a deliverable FX facility and deliverable FX liquidity via the IBANFIRST-REST API.
 As a partner, you will be able to create quote and trade on the real-time forex market on behalf of your client (our counterparty).
