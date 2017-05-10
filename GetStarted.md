@@ -16,7 +16,7 @@ The IBANFIRST-rest API supports online trading for the following contracts: TOD 
 
 ## Details ##
 
-#### <a id="post_quotes"></a> Create Quote (beta) ####
+### <a id="post_quotes"></a> Create Quote (beta) ###
 
 ```
 Method: POST
@@ -107,7 +107,7 @@ POST /quotes/
 <hr />
 
 
-#### <a id="post_trades"></a> Execute Trade ####
+### <a id="post_trades"></a> Execute Trade ###
 
 ```
 Method: POST
