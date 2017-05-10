@@ -1,9 +1,9 @@
 # TRADE SERVICE #  
 
-FX4BIZ provides a deliverable FX facility and deliverable FX liquidity via the FX4BIZ-REST API.
+IBANFIRST provides a deliverable FX facility and deliverable FX liquidity via the IBANFIRST-REST API.
 As a partner, you will be able to create quote and trade on the real-time forex market on behalf of your client (our counterparty).
 
-The FX4BIZ-rest API supports online trading for the following contracts: TOD (Same-day), TOM (next-day), SPOT (T+2). 
+The IBANFIRST-rest API supports online trading for the following contracts: TOD (Same-day), TOM (next-day), SPOT (T+2). 
 
 ## Route ##
 
@@ -34,8 +34,7 @@ The Create Quote service is a read-only service permitting to ask for a real-tim
 | amount | [Amount Object](../objects/objects.md#amount_object) | Required | [Amount Object](../objects/objects.md#amount_object) representing the amount to trade. |
 | deliveryDate | [Date](../conventions/formattingConventions.md#type_date) | optional | Initial delivery date of the quote. `YYYY-MM-DD` |
 
-
-**Example: Post Quotes (1) - I want to buy USD (my principal is in USD)**
+**Example: Create Quote (1) - I want to buy USD (my principal is in USD)**
 ```js
 POST /quotes/
 {
@@ -48,7 +47,8 @@ POST /quotes/
 }
 
 ```
-**Example: Post Quotes (2) - I want to sell EUR (my principal is in EUR)**
+
+**Example: Create Quote (2) - I want to sell EUR (my principal is in EUR)**
 ```js
 POST /quotes/
 {
@@ -67,7 +67,7 @@ POST /quotes/
 |-------|------|-------------|
 | quote | [Quote object](../objects/objects.md#quote_object) | A [Quote object](../objects/objects.md#quote_object) representing the quote requested. |
 
-**Example: Return Post Quotes (1) - I want to buy USD (my principal is in USD)**
+**Example: Return Create Quote (1) - I want to know what's the rate to buy USD (my principal is in USD)**
 ```js
 {
   "id": "Na5Dv6E",
@@ -86,7 +86,7 @@ POST /quotes/
 }
 ```
 
-**Example: Return Post Quotes (2) - I want to sell EUR (my principal is in EUR)**
+**Example: Return Create Quote (2) - I want to know what's the rate to sell EUR (my principal is in EUR)**
 ```js
 {
   "id": "Na5Dv6E",
@@ -106,6 +106,94 @@ POST /quotes/
 ```
 <hr />
 
+
+#### <a id="post_trades"></a> Execute Trade ####
+
+```
+Method: POST
+URL: /trades/
+```
+This service allows you to execute trade on the real-time Forex market. 
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| currencyPair | [CurrencyPair](../conventions/formattingConventions.md#type_currencypair) | Required | A six-digit code representing the cross of currency requested. |
+| side | String | Required | Action related to the nominal amount. To be bought or sold on the market, `S` to sell and `B` to buy. |
+| amount | [Amount Object](../objects/objects.md#amount_object) | Required | Principal amount associated to the trade. |
+| deliveryDate | [Date](../conventions/formattingConventions.md#type_date) | Optional | Execution date of your trade. |
+
+**Example: Execute Trade (1) - I want to buy USD (my principal is in USD)**
+```js
+POST /trades/
+{
+    "currencyPair": "EURUSD",
+    "side": "B",
+    "amount": {
+      "value": "1000",
+      "currency": "USD"
+    },
+}
+
+```
+
+**Example: Execute Trade (2) - I want to sell EUR (my principal is in EUR)**
+```js
+POST /trades/
+{
+    "currencyPair": "EURUSD",
+    "side": "S",
+    "amount": {
+      "value": "1000",
+      "currency": "EUR"
+    },
+}
+
+```
+**Returns:**
+| Field | Type | Description |
+|-------|------|-------------|
+| trade | [Trade object](../objects/objects.md#trade_object) | A [Trade object](../objects/objects.md#trade_object) representing the trade requested. |
+
+**Example: Return Execute Trade (1) - I want to buy USD (my principal is in USD)**
+```js
+{
+  "id": "Na5Dv6E",
+  "appliedRate": "1.1070",
+  "currencyPair": "EURUSD",
+  "sourceAmount": { 
+    "value": "903.34", 
+    "currency": "EUR" 
+  },
+  "deliveredAmount": { 
+    "value": "1000", 
+    "currency": "USD" 
+  },
+  "createdDate": "2016-01-01 00:00:00", 
+  "deliveryDate": "2016-01-01",
+}
+```
+
+**Example: Return Execute Trade (2) - I want to sell EUR (my principal is in EUR)**
+```js
+{
+  "id": "Na5Dv6E",
+  "appliedRate": "1.1070",
+  "currencyPair": "EURUSD",
+  "sourceAmount": { 
+    "value": "1000", 
+    "currency": "EUR" 
+  },
+  "deliveredAmount": { 
+    "value": "1107", 
+    "currency": "USD" 
+  },
+  "createdDate": "2016-01-01 00:00:00", 
+  "deliveryDate": "2016-01-01",
+}
+```
+<hr />
 
 Quote + Trade on quote
 
