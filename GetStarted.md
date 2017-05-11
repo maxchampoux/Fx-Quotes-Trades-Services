@@ -10,8 +10,8 @@ The IBANFIRST-rest API supports online trading for the following contracts: TOD 
 | Route | Description |
 |-------|-------------|
 | [`POST /quotes/`](#post_quotes) | Create Quote (beta) |
-| [`POST /trades/`](#post_trades) | Submit Trade (beta) |
-| [`POST /trades/onQuote/-{idQuote}/`](#post_tradesOnQuote) | Submit Trade on Quote (beta) |
+| [`POST /trades/`](#post_trades) | Execute Trade (beta) |
+| [`POST /trades/onQuote/-{idQuote}/`](#post_tradesOnQuote) | Execute Trade on Quote (beta) |
 
 
 ## Details ##
