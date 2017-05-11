@@ -81,4 +81,8 @@ Please have a look to the error list. This list may be updated.
 |74|403|Forbidden|The OTP session expired.|
 |75|403|Forbidden|The IP address of your request is not from your trusted IP.|
 |76|400|Bad request|The document type you submitted is not a valid document type.|
-|77|400|Bad request|
+|77|400|Bad request|The document type you submitted is not a valid document type.|
+77|400|Bad request|The file you submitted is over the upload file size limit (7Mo or 7 340 032 octets).|
+78|400|Bad request|The tag you submitted is not a valid file name.|
+79|400|Bad request|The payment you uploaded a document for does not exists|
+
