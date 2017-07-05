@@ -124,6 +124,7 @@ This service allows you to execute trade on the real-time Forex market.
 | side | String | Required | Action related to the nominal amount. To be bought or sold on the market, `S` to sell and `B` to buy. |
 | amount | [Amount Object](../objects/objects.md#amount_object) | Required | Principal amount associated to the trade. |
 | deliveryDate | [Date](../conventions/formattingConventions.md#type_date) | Optional | Execution date of your trade. |
+| tag | String(150) | Optional | Custom reference you want to share with iBanFirst. 'MsgId' |
 
 **Example: Execute Trade (1) - I want to buy USD (my principal is in USD)**
 ```js
